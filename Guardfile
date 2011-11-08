@@ -11,7 +11,7 @@ group :test do
   end
 end
 
-group :run
+group :run do
   guard 'process', :name => 'Rails', :command => 'bundle exec rails s', :stop_signal => "KILL"  do
     watch('Gemfile.lock')
   end
