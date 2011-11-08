@@ -137,7 +137,6 @@ DEPENDENCIES
   jquery-rails
   libnotify
   nokogiri
-  rack-test
   rails (= 3.1.1)
   rb-inotify
   sass-rails (~> 3.1.4)

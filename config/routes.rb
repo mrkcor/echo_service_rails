@@ -1,4 +1,7 @@
 EchoServiceRails::Application.routes.draw do
+  match '/echo_service' => 'echo_service#wsdl', :via => :get
+  match '/echo_service' => 'echo_service#endpoint', :via => :post
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
