@@ -5,6 +5,8 @@ class EchoServiceController < ApplicationController
   Mime::Type.unregister :xml
   Mime::Type.register "text/xml", :xml
 
+  skip_before_filter :verify_authenticity_token
+
   # Service the WSDL
   def wsdl
     @url = ENV['BASE_URL'] || "http://localhost:#{request.port}"
