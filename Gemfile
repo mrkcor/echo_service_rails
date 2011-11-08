@@ -19,7 +19,8 @@ gem 'therubyracer'
 group :test do
   gem 'turn', :require => false
   gem 'guard'
+  gem 'rb-inotify' if RbConfig::CONFIG['target_os'] == 'linux'
+  gem 'libnotify' if RbConfig::CONFIG['target_os'] == 'linux'
   gem 'guard-process'
   gem 'guard-test'
-  gem 'rack-test'
 end
