@@ -5,7 +5,7 @@ class EchoServiceController < ApplicationController
   Mime::Type.unregister :xml
   Mime::Type.register "text/xml", :xml
 
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   # Service the WSDL
   def wsdl

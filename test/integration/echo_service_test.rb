@@ -8,7 +8,7 @@ class EchoServiceTest < ActionDispatch::IntegrationTest
   end
 
   test "echo to the echo service" do
-    post "/echo_service", %Q{<?xml version="1.0" encoding="UTF-8"?>
+    post "/echo_service", params: %Q{<?xml version="1.0" encoding="UTF-8"?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:echo="http://www.without-brains.net/echo">
    <soapenv:Body>
       <echo:EchoRequest>
@@ -30,7 +30,7 @@ class EchoServiceTest < ActionDispatch::IntegrationTest
   end
 
   test "reverse to the echo service" do
-    post "/echo_service", %Q{<?xml version="1.0" encoding="UTF-8"?>
+    post "/echo_service", params: %Q{<?xml version="1.0" encoding="UTF-8"?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:echo="http://www.without-brains.net/echo">
    <soapenv:Body>
       <echo:ReverseEchoRequest>
@@ -52,7 +52,7 @@ class EchoServiceTest < ActionDispatch::IntegrationTest
   end
 
   test "echo service gives soap error on invalid message" do
-    post "/echo_service", %Q{<?xml version="1.0" encoding="UTF-8"?>
+    post "/echo_service", params: %Q{<?xml version="1.0" encoding="UTF-8"?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:echo="http://www.without-brains.net/echo">
    <soapenv:Body>
       <echo:EchoRequest>
@@ -64,7 +64,7 @@ class EchoServiceTest < ActionDispatch::IntegrationTest
   <SOAP:Body>
     <SOAP:Fault>
       <faultcode>SOAP:Client</faultcode>
-      <faultstring>Element '{http://www.without-brains.net/echo}EchoRequest': Missing child element(s). Expected is ( {http://www.without-brains.net/echo}Message ).</faultstring>
+      <faultstring>4:0: ERROR: Element '{http://www.without-brains.net/echo}EchoRequest': Missing child element(s). Expected is ( {http://www.without-brains.net/echo}Message ).</faultstring>
     </SOAP:Fault>
   </SOAP:Body>
 </SOAP:Envelope>}
@@ -74,7 +74,7 @@ class EchoServiceTest < ActionDispatch::IntegrationTest
   end
 
   test "echo service gives error for must understand soap headers" do
-    post "/echo_service", %Q{<?xml version="1.0" encoding="UTF-8"?>
+    post "/echo_service", params: %Q{<?xml version="1.0" encoding="UTF-8"?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:echo="http://www.without-brains.net/echo">
    <soapenv:Header>
      <echo:RandomHeader soapenv:mustUnderstand="1">
@@ -102,7 +102,7 @@ class EchoServiceTest < ActionDispatch::IntegrationTest
   end
 
   test "echo service ignores soap headers with actor attribute set" do
-    post "/echo_service", %Q{<?xml version="1.0" encoding="UTF-8"?>
+    post "/echo_service", params: %Q{<?xml version="1.0" encoding="UTF-8"?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:echo="http://www.without-brains.net/echo">
    <soapenv:Header>
      <echo:RandomHeader soapenv:mustUnderstand="1" soapenv:actor="http://www.without-brains.net/another_service">
@@ -129,7 +129,7 @@ class EchoServiceTest < ActionDispatch::IntegrationTest
   end
 
   test "echo service checks all soap headers" do
-    post "/echo_service", %Q{<?xml version="1.0" encoding="UTF-8"?>
+    post "/echo_service", params: %Q{<?xml version="1.0" encoding="UTF-8"?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:echo="http://www.without-brains.net/echo">
    <soapenv:Header>
      <echo:FirstRandomHeader soapenv:mustUnderstand="1" soapenv:actor="http://www.without-brains.net/another_service">

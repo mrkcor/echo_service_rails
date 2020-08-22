@@ -1,4 +1,4 @@
 EchoServiceRails::Application.routes.draw do
-  match '/echo_service' => 'echo_service#wsdl', :via => :get
-  match '/echo_service' => 'echo_service#endpoint', :via => :post
+  get '/echo_service' => 'echo_service#wsdl'
+  post '/echo_service' => 'echo_service#endpoint'
 end

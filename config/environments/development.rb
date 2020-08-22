@@ -5,9 +5,7 @@ EchoServiceRails::Application.configure do
   # every request.  This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
-
-  # Log error messages when you accidentally call methods on nil.
-  config.whiny_nils = true
+  config.eager_load = false
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
@@ -27,9 +25,6 @@ EchoServiceRails::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-
-	# Raise exception on mass assignment protection for Active Record models
-	config.active_record.mass_assignment_sanitizer = :strict
 
 	# Log the query plan for queries taking more than this (works
 	# with SQLite, MySQL, and PostgreSQL)
