@@ -10,7 +10,7 @@ Usage
 -----
 To run the EchoService on Rails simply start Rails (rails s)
 
-The default endpoint URL in the WSDL is http://localhost:3000/echo\_service, you can set the environmental variable BASE\_URL to replace http://localhost:3000 with whatever is appropriate for you (per example http://echo.without-brains.net)
+The default endpoint URL in the WSDL is http://localhost:3000/echo_service, you can set the environmental variable BASE\_URL to replace http://localhost:3000 with whatever is appropriate for you (per example http://echo.without-brains.net)
 
 License
 -------
